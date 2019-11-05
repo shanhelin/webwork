@@ -1,5 +1,6 @@
-package com.webwork.webController;
+package com.webwork.controller;
 
+import com.webwork.entity.User;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,7 +50,7 @@ public class WebController {
      * author：yulin
      * Create date 2019-10-29 11:51
      */
-    @RequestMapping("/login")
+    @RequestMapping("/")
     public String login(){
         return "login.html";
     }
@@ -89,7 +90,7 @@ public class WebController {
         // 直接将json信息打印出来
         System.out.println("---------开始-----------");
 
-        Administrator administrator2=new Administrator();
+        User administrator2=new User();
         //取出josn中的数据
         administrator2.setAdminpassworld(jsonParam.getString("adminpassworld"));
         administrator2.setAdminusername(jsonParam.getString("adminusername"));

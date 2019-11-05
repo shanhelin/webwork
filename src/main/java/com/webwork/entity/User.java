@@ -1,6 +1,6 @@
-package com.webwork.webController;
+package com.webwork.entity;
 
-public class Administrator {
+public class User {
 
     private int id;
     private String adminusername;
