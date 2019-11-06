@@ -1,7 +1,10 @@
 package com.webwork.controller;
 
 import com.webwork.entity.User;
+import com.webwork.service.UserService;
+import com.webwork.unit.Md5Util;
 import net.sf.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +27,9 @@ import java.util.List;
 @Controller
 public class WebController {
 
+    @Autowired
+    private UserService userService;
+
     /**
      * 描述：注册界面
      * author：yulin
@@ -34,16 +40,6 @@ public class WebController {
         return "sign-up";
     }
 
-    /**
-     * 描述：主界面接口
-     * author：yulin
-     * Create date 2019-10-23
-     * @return
-     */
-    @RequestMapping("/index")
-    public String index(){
-        return "index.html";
-    }
 
     /**
      * 描述：登录界面
@@ -87,25 +83,26 @@ public class WebController {
     @ResponseBody
     @RequestMapping(value = "/adminindex/index", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public int getByJSON(@RequestBody JSONObject jsonParam, HttpServletRequest request, Model model, HttpServletResponse response) {
-        // 直接将json信息打印出来
-        System.out.println("---------开始-----------");
 
-        User administrator2=new User();
-        //取出josn中的数据
-        administrator2.setAdminpassworld(jsonParam.getString("password"));
-        administrator2.setAdminusername(jsonParam.getString("username"));
         String code=jsonParam.getString("mytry");
-        System.out.println("----------------------mytry="+code);
 
         HttpSession session = request.getSession();
         String code2 = (String) session.getAttribute("result");
         System.out.println( code2 );
-        if(code.equals(code2)){
+        if(code.equalsIgnoreCase(code2)){
 
-            System.out.println( jsonParam.getString("password") );
-            System.out.println( jsonParam.getString("username") );
+            //验证码比对正确，进行下一步判断
+            User user=userService.findByUsername( jsonParam.getString("username") );
 
+            String password = Md5Util.MD5(jsonParam.getString("password"));
+
+            if(user.getPassword().equals( password )){
+
+                int id=user.getId();
+                session.setAttribute("id", id);
             return 1;
+            }
+            return 0;
         }
 
         return 2;
@@ -120,6 +117,27 @@ public class WebController {
     @RequestMapping("/calendar")
     public String calendar(){
         return "calendar";
+    }
+
+    /**
+     * 描述：主界面接口
+     * author：yulin
+     * Create date 2019-10-23
+     * @return
+     */
+    @RequestMapping("/index")
+    public String index(){
+        return "index.html";
+    }
+
+    @RequestMapping("/tablelist")
+    public String tablelist(){
+        return "tablelist";
+    }
+
+    @RequestMapping("/tablelistimg")
+    public String tablelistimg(){
+        return "tablelistimg";
     }
 
 
