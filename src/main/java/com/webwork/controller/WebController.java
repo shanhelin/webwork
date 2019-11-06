@@ -92,23 +92,34 @@ public class WebController {
 
         User administrator2=new User();
         //取出josn中的数据
-        administrator2.setAdminpassworld(jsonParam.getString("adminpassworld"));
-        administrator2.setAdminusername(jsonParam.getString("adminusername"));
+        administrator2.setAdminpassworld(jsonParam.getString("password"));
+        administrator2.setAdminusername(jsonParam.getString("username"));
         String code=jsonParam.getString("mytry");
         System.out.println("----------------------mytry="+code);
 
         HttpSession session = request.getSession();
         String code2 = (String) session.getAttribute("result");
+        System.out.println( code2 );
         if(code.equals(code2)){
 
-            System.out.println( jsonParam.getString("adminpassworld") );
-            System.out.println( jsonParam.getString("adminusername") );
+            System.out.println( jsonParam.getString("password") );
+            System.out.println( jsonParam.getString("username") );
 
             return 1;
         }
 
         return 2;
 
+    }
+
+    /**
+     * 描述：日历url
+     * author:yulin
+     * Create date 2019-11-6 13:05
+     */
+    @RequestMapping("/calendar")
+    public String calendar(){
+        return "calendar";
     }
 
 
