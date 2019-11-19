@@ -21,73 +21,163 @@
 </head>
 
 <body data-type="login">
-    <script src="assets/js/theme.js"></script>
-    <div class="am-g tpl-g">
-        <!-- 风格切换 -->
-        <div class="tpl-skiner">
-            <div class="tpl-skiner-toggle am-icon-cog">
+<script src="assets/js/theme.js"></script>
+<div class="am-g tpl-g">
+    <!-- 风格切换 -->
+    <div class="tpl-skiner">
+        <div class="tpl-skiner-toggle am-icon-cog">
+        </div>
+        <div class="tpl-skiner-content">
+            <div class="tpl-skiner-content-title">
+                选择主题
             </div>
-            <div class="tpl-skiner-content">
-                <div class="tpl-skiner-content-title">
-                    选择主题
-                </div>
-                <div class="tpl-skiner-content-bar">
-                    <span class="skiner-color skiner-white" data-color="theme-white"></span>
-                    <span class="skiner-color skiner-black" data-color="theme-black"></span>
-                </div>
+            <div class="tpl-skiner-content-bar">
+                <span class="skiner-color skiner-white" data-color="theme-white"></span>
+                <span class="skiner-color skiner-black" data-color="theme-black"></span>
             </div>
         </div>
-        <div class="tpl-login">
-            <div class="tpl-login-content">
-                <div class="tpl-login-title">注册用户</div>
-                <span class="tpl-login-content-info">
+    </div>
+    <div class="tpl-login">
+        <div class="tpl-login-content">
+            <div class="tpl-login-title">注册用户</div>
+            <span class="tpl-login-content-info">
                   创建一个新的用户
               </span>
 
 
-                <form class="am-form tpl-form-line-form">
-                    <div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="user-name" placeholder="邮箱">
+            <form class="am-form tpl-form-line-form">
+                <div class="am-form-group">
+                    <input type="text" class="tpl-form-input" id="email" placeholder="邮箱">
 
-                    </div>
+                </div>
 
-                    <div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="user-name" placeholder="用户名">
-                    </div>
+                <div class="am-form-group">
+                    <input type="text" class="tpl-form-input" id="username" placeholder="用户名">
+                </div>
 
-                    <div class="am-form-group">
-                        <input type="password" class="tpl-form-input" id="user-name" placeholder="请输入密码">
-                    </div>
+                <div class="am-form-group">
+                    <input type="password" class="tpl-form-input" id="password" placeholder="请输入密码">
+                </div>
 
-                    <div class="am-form-group">
-                        <input type="password" class="tpl-form-input" id="user-name" placeholder="再次输入密码">
-                    </div>
+                <div class="am-form-group">
+                    <input type="password" class="tpl-form-input" id="password1" placeholder="再次输入密码">
+                </div>
 
-                    <div class="am-form-group tpl-login-remember-me">
-                        <input id="remember-me" type="checkbox">
-                        <label for="remember-me">
-       
-                        我已阅读并同意 <a href="javascript:;">《用户注册协议》</a> 
-                         </label>
+                <div class="am-form-group tpl-login-remember-me">
+                    <input id="remember-me" type="checkbox">
+                    <label for="remember-me">
 
-                    </div>
+                        我已阅读并同意 <a href="javascript:;">《用户注册协议》</a>
+                    </label>
 
-
+                </div>
 
 
 
 
-                    <div class="am-form-group">
 
-                        <button type="button" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">提交</button>
 
-                    </div>
-                </form>
-            </div>
+                <div class="am-form-group">
+
+                    <button type="button"id="zhao" onclick1="keyEnter()" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn" onclick="docreate()">提交</button>
+
+                </div>
+            </form>
         </div>
     </div>
-    <script src="assets/js/amazeui.min.js"></script>
-    <script src="assets/js/app.js"></script>
+</div>
+<script src="assets/js/amazeui.min.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+    function docreate() {
+        var a=$("#username").val();
+        var b=$("#password").val();
+        var e=$("#password1").val();
+        var c=$("#email").val();
+
+        if (a==""){
+            alert("请输入管理员账号");
+            return false;
+        }
+
+        if (b==""){
+            alert("请输入密码");
+            return false;
+        }
+
+        if (e==""){
+            alert("请再次输入密码");
+            return false;
+        }
+
+        if (e!=b){
+            alert("请输入一致密码");
+            return true;
+        }
+
+        if (c==""){
+            alert("邮箱不能为空");
+            return false;
+        }
+
+
+
+        dldata={"username":a,"password":b,"mytey":c,"password1":e};
+        var data=JOSN.stringify(dldata);
+
+
+
+        $.ajax({
+            url:"",
+            type:"",
+            data:data,
+            contentType:"application/json",
+            dataType:"json",
+            success:function (datas) {
+                if (datas=1){
+
+                    window.location.href="/index";
+
+
+
+                }
+                else if (datas=2){
+                    alert("该用户名已经注册");
+                    window.location.href="/";
+                }
+
+            },
+            error:function () {
+                alert("网络连接失败");
+
+            }
+
+        });
+
+
+
+
+
+    }
+
+    console.val(a);
+    console.val(b);
+    console.val(c);
+    console.val(e);
+
+</script>
+<script>
+    document.onkeydown = function(eventTag){
+        var event=eventTag||windows.event;
+        var e=event.srcElement||event.target;
+        if(event.keyCode == 13){
+            console.log("我的回车被点击了");
+            docreate();
+            return false;
+        }
+    }
+
+</script>
 
 </body>
 

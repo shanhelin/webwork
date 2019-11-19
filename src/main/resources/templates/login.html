@@ -26,45 +26,55 @@
 </head>
 
 <body data-type="login" class="theme-black">
-    <script src="assets/js/theme.js"></script>
-    <div class="am-g tpl-g">
-        <!-- 风格切换 -->
-        <div class="tpl-login">
-            <div class="tpl-login-content">
-                <h1 style="color:#B3B3B3"><center>用户后台管理系统</center></h1>
-                <form class="am-form tpl-form-line-form">
-                    <div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="username" placeholder="请输入账号">
-                    </div>
+<script src="assets/js/theme.js"></script>
+<div class="am-g tpl-g">
+    <!-- 风格切换 -->
+    <div class="tpl-login">
+        <div class="tpl-login-content">
+            <h1 style="color:#B3B3B3"><center>用户后台管理系统</center></h1>
+            <form class="am-form tpl-form-line-form">
+                <div class="am-form-group">
+                    <input type="text" class="tpl-form-input" id="username" placeholder="请输入账号">
+                </div>
 
-                    <div class="am-form-group">
-                        <input type="password" class="tpl-form-input" id="password" placeholder="请输入密码">
-                    </div>
-                    <div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="mytry" placeholder="请输入验证码" style="width: 60%;display: inline-block;margin-top: -25px;">
-                        <canvas id="canvas" width="100" height="43" style="display: inline-block;"></canvas>
-                    </div>
+                <div class="am-form-group">
+                    <input type="password" class="tpl-form-input" id="password" placeholder="请输入密码">
+                </div>
+                <div class="am-form-group">
+                    <input type="text" class="tpl-form-input" id="mytry" placeholder="请输入验证码" style="width: 60%;display: inline-block;margin-top: -25px;">
+                    <canvas id="canvas" width="100" height="43" style="display: inline-block;"></canvas>
+                </div>
 
-                    <div class="am-form-group tpl-login-remember-me">
-                        <input id="remember-me" type="checkbox">
-                        <label for="remember-me">
+                <div class="am-form-group tpl-login-remember-me">
+                    <input id="remember-me" type="checkbox">
+                    <label for="remember-me">
                         记住密码
-                         </label>
-                    </div>
+                    </label>
+                </div>
 
-                    <div class="am-form-group">
+                <div class="am-form-group">
 
-                        <button type="button" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn" onclick="docreate()">提交</button>
-                        <a type="button" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn" href="/sign">注册</a>
-                    </div>
-                </form>
-            </div>
+                    <button type="button" onclick1="eventTag()" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn" onclick="docreate()">提交</button>
+                    <a type="button" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn" href="/sign">注册</a>
+                </div>
+            </form>
         </div>
     </div>
-    <script src="assets/js/amazeui.min.js"></script>
-    <script src="assets/js/app.js"></script>
-    <script type="text/javascript">
-        var aCode = "1234";
+</div>
+<script src="assets/js/amazeui.min.js"></script>
+<script src="assets/js/app.js"></script>
+<script type="text/javascript">
+    var aCode = "1234";
+    $.ajax({
+        url:"result",
+        async:false,
+        success:function(k){
+            aCode=k;
+        }
+    })
+
+    $("#canvas").on("click",function(){
+        var _this=$(this)
         $.ajax({
             url:"result",
             async:false,
@@ -72,126 +82,132 @@
                 aCode=k;
             }
         })
-
-        $("#canvas").on("click",function(){
-            var _this=$(this)
-            $.ajax({
-                url:"result",
-                async:false,
-                success:function(k){
-                    aCode=k;
-                }
-            })
-        })
-        $(function(){
-            var show_num = [];
+    })
+    $(function(){
+        var show_num = [];
+        draw(show_num);
+        $("#canvas").on('click',function(){
             draw(show_num);
-            $("#canvas").on('click',function(){
-                draw(show_num);
-            })
         })
+    })
+    console.log(aCode);
+    function draw(show_num) {
+        var canvas_width=$('#canvas').width();
+        var canvas_height=$('#canvas').height();
+        var canvas = document.getElementById("canvas");//获取到canvas的对象，演员
+        var context = canvas.getContext("2d");//获取到canvas画图的环境，演员表演的舞台
+        canvas.width = canvas_width;
+        canvas.height = canvas_height;
+        var aLength = aCode.length;//获取到数组的长度
         console.log(aCode);
-        function draw(show_num) {
-            var canvas_width=$('#canvas').width();
-            var canvas_height=$('#canvas').height();
-            var canvas = document.getElementById("canvas");//获取到canvas的对象，演员
-            var context = canvas.getContext("2d");//获取到canvas画图的环境，演员表演的舞台
-            canvas.width = canvas_width;
-            canvas.height = canvas_height;
-            var aLength = aCode.length;//获取到数组的长度
-            console.log(aCode);
-            for (var i = 0; i <= 3; i++) {
-                var j = Math.floor(Math.random() * aLength);//获取到随机的索引值
-                var deg = Math.random() * 30 * Math.PI / 180;//产生0~30之间的随机弧度
-                var txt = aCode[i];//得到随机的一个内容
-                show_num[i] = txt.toLowerCase();
-                var x = 10 + i * 20;//文字在canvas上的x坐标
-                var y = 20 + Math.random() * 8;//文字在canvas上的y坐标
-                context.font = "bold 23px 微软雅黑";
+        for (var i = 0; i <= 3; i++) {
+            var j = Math.floor(Math.random() * aLength);//获取到随机的索引值
+            var deg = Math.random() * 30 * Math.PI / 180;//产生0~30之间的随机弧度
+            var txt = aCode[i];//得到随机的一个内容
+            show_num[i] = txt.toLowerCase();
+            var x = 10 + i * 20;//文字在canvas上的x坐标
+            var y = 20 + Math.random() * 8;//文字在canvas上的y坐标
+            context.font = "bold 23px 微软雅黑";
 
-                context.translate(x, y);
-                context.rotate(deg);
+            context.translate(x, y);
+            context.rotate(deg);
 
-                context.fillStyle = randomColor();
-                context.fillText(txt, 0, 0);
+            context.fillStyle = randomColor();
+            context.fillText(txt, 0, 0);
 
-                context.rotate(-deg);
-                context.translate(-x, -y);
-            }
-            for (var i = 0; i <= 5; i++) { //验证码上显示线条
-                context.strokeStyle = randomColor();
-                context.beginPath();
-                context.moveTo(Math.random() * canvas_width, Math.random() * canvas_height);
-                context.lineTo(Math.random() * canvas_width, Math.random() * canvas_height);
-                context.stroke();
-            }
-            for (var i = 0; i <= 30; i++) { //验证码上显示小点
-                context.strokeStyle = randomColor();
-                context.beginPath();
-                var x = Math.random() * canvas_width;
-                var y = Math.random() * canvas_height;
-                context.moveTo(x, y);
-                context.lineTo(x + 1, y + 1);
-                context.stroke();
-            }
+            context.rotate(-deg);
+            context.translate(-x, -y);
         }
-
-        function randomColor() {//得到随机的颜色值
-            var r = Math.floor(Math.random() * 256);
-            var g = Math.floor(Math.random() * 256);
-            var b = Math.floor(Math.random() * 256);
-            return "rgb(" + r + "," + g + "," + b + ")";
+        for (var i = 0; i <= 5; i++) { //验证码上显示线条
+            context.strokeStyle = randomColor();
+            context.beginPath();
+            context.moveTo(Math.random() * canvas_width, Math.random() * canvas_height);
+            context.lineTo(Math.random() * canvas_width, Math.random() * canvas_height);
+            context.stroke();
         }
+        for (var i = 0; i <= 30; i++) { //验证码上显示小点
+            context.strokeStyle = randomColor();
+            context.beginPath();
+            var x = Math.random() * canvas_width;
+            var y = Math.random() * canvas_height;
+            context.moveTo(x, y);
+            context.lineTo(x + 1, y + 1);
+            context.stroke();
+        }
+    }
 
-        function docreate(){
-            var a=$("#username").val();
-            var b=$("#password").val();
-            var c=$("#mytry").val();
+    function randomColor() {//得到随机的颜色值
+        var r = Math.floor(Math.random() * 256);
+        var g = Math.floor(Math.random() * 256);
+        var b = Math.floor(Math.random() * 256);
+        return "rgb(" + r + "," + g + "," + b + ")";
+    }
 
-            if(a==""){
-                alert("请输入管理员账号");
-                return false;
-            }
-            if(b==""){
-                alert("请输入密码");
-                return false;
-            }if(c==""){
-                alert("验证码不能为空");
-                return false;
-            }
-            dldata={"username": a,"password":b,"mytry": c};
-            var data=JSON.stringify(dldata);
 
-            $.ajax({
-                url:"/adminindex/index",
-                type:"post",
-                data:data,
-                contentType:"application/json",
-                dataType:"json",
-                success: function (datas) {
-                    if(datas==1){
 
-                        window.location.href = "/index";
 
-                    }else if(datas==2){
 
-                        alert("验证码错误");
-                        window.location.href = "/";
+    function docreate(){
+        var a=$("#username").val();
+        var b=$("#password").val();
+        var c=$("#mytry").val();
 
-                    }
-                    else{
-                        alert("账号密码错误");
-                        window.location.href = "/";
-                    }
+        if(a==""){
+            alert("请输入管理员账号");
+            return false;
+        }
+        if(b==""){
+            alert("请输入密码");
+            return false;
+        }if(c==""){
+            alert("验证码不能为空");
+            return false;
+        }
+        dldata={"username": a,"password":b,"mytry": c};
+        var data=JSON.stringify(dldata);
 
-                },
-                error:function(){
-                    alert("网络连接失败")
+        $.ajax({
+            url:"/adminindex/index",
+            type:"post",
+            data:data,
+            contentType:"application/json",
+            dataType:"json",
+            success: function (datas) {
+                if(datas==1){
+
+                    window.location.href = "/index";
+
+                }else if(datas==2){
+
+                    alert("验证码错误");
+                    window.location.href = "/";
+
                 }
-            });
+                else{
+                    alert("账号密码错误");
+                    window.location.href = "/";
+                }
 
+            },
+            error:function(){
+                alert("网络连接失败")
+            }
+        });
+
+    }
+</script>
+<script>
+    document.onkeydown = function(eventTag){
+        var event=eventTag||windows.event;
+        var e=event.srcElement||event.target;
+        if(event.keyCode == 13){
+            console.log("我的回车被点击了");
+            docreate();
+            return false;
         }
-    </script>
+    }
+
+</script>
 
 </body>
 
