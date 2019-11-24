@@ -98,7 +98,7 @@ public class WebController {
 
             if(user.getPassword().equals( password )){
 
-                int id=user.getId();
+                Integer id=user.getId();
                 session.setAttribute("id", id);
             return 1;
             }
@@ -115,7 +115,15 @@ public class WebController {
      * Create date 2019-11-6 13:05
      */
     @RequestMapping("/calendar")
-    public String calendar(){
+    public String calendar(HttpServletRequest request){
+
+        HttpSession session=request.getSession();
+
+        Integer id=(Integer)session.getAttribute( "id" );
+        if(id==null){
+
+            return "login";
+        }
         return "calendar";
     }
 
@@ -126,17 +134,35 @@ public class WebController {
      * @return
      */
     @RequestMapping("/index")
-    public String index(){
+    public String index(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        Integer id=(Integer)session.getAttribute( "id" );
+        if(id==null){
+
+            return "login";
+        }
         return "index.html";
     }
 
     @RequestMapping("/tablelist")
-    public String tablelist(){
+    public String tablelist(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        Integer id=(Integer)session.getAttribute( "id" );
+        if(id==null){
+
+            return "login";
+        }
         return "tablelist";
     }
 
     @RequestMapping("/tablelistimg")
-    public String tablelistimg(){
+    public String tablelistimg(HttpServletRequest request){
+        HttpSession session=request.getSession();
+        Integer id=(Integer)session.getAttribute( "id" );
+        if(id==null){
+
+            return "login";
+        }
         return "tablelistimg";
     }
 
