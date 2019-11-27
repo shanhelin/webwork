@@ -121,50 +121,12 @@
         }
 
 
-
-        dldata={"username":a,"password":b,"mytey":c,"password1":e};
-        var data=JOSN.stringify(dldata);
-
-
-
-        $.ajax({
-            url:"",
-            type:"",
-            data:data,
-            contentType:"application/json",
-            dataType:"json",
-            success:function (datas) {
-                if (datas=1){
-
-                    window.location.href="/index";
-
-
-
-                }
-                else if (datas=2){
-                    alert("该用户名已经注册");
-                    window.location.href="/";
-                }
-
-            },
-            error:function () {
-                alert("网络连接失败");
-
-            }
-
-        });
-
+    alert("提交成功！")
 
 
 
 
     }
-
-    console.val(a);
-    console.val(b);
-    console.val(c);
-    console.val(e);
-
 </script>
 <script>
     document.onkeydown = function(eventTag){

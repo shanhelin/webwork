@@ -160,7 +160,7 @@
 
                     <!-- 退出 -->
                     <li class="am-text-sm">
-                        <a href="javascript:;">
+                        <a href="/">
                             <span class="am-icon-sign-out"></span> 退出
                         </a>
                     </li>
@@ -264,7 +264,7 @@
                             <div class="am-fl">
                                 <div class="widget-fluctuation-period-text">
                                     ￥61746.45
-                                    <button class="widget-fluctuation-tpl-btn">
+                                    <button class="widget-fluctuation-tpl-btn"  data-am-modal="{target: '#my-alert2'}">
                                         <i class="am-icon-calendar"></i>
                                         更多月份
                                     </button>
@@ -335,22 +335,22 @@
                 <div class="am-u-sm-12 am-u-md-4">
                     <div class="widget am-cf">
                         <div class="widget-head am-cf">
-                            <div class="widget-title am-fl">专用服务器负载</div>
+                            <div class="widget-title am-fl">率土之滨热门服务器负载</div>
                             <div class="widget-function am-fr">
                                 <a href="javascript:;" class="am-icon-cog"></a>
                             </div>
                         </div>
                         <div class="widget-body widget-body-md am-fr">
 
-                            <div class="am-progress-title">CPU Load <span class="am-fr am-progress-title-more">28% / 100%</span></div>
+                            <div class="am-progress-title">群雄讨董X232 <span class="am-fr am-progress-title-more">88% / 100%</span></div>
                             <div class="am-progress">
-                                <div class="am-progress-bar" style="width: 15%"></div>
+                                <div class="am-progress-bar" style="width: 88%"></div>
                             </div>
-                            <div class="am-progress-title">CPU Load <span class="am-fr am-progress-title-more">28% / 100%</span></div>
+                            <div class="am-progress-title">八阵图X119 <span class="am-fr am-progress-title-more">75% / 100%</span></div>
                             <div class="am-progress">
                                 <div class="am-progress-bar  am-progress-bar-warning" style="width: 75%"></div>
                             </div>
-                            <div class="am-progress-title">CPU Load <span class="am-fr am-progress-title-more">28% / 100%</span></div>
+                            <div class="am-progress-title">群雄逐鹿X363 <span class="am-fr am-progress-title-more">28% / 100%</span></div>
                             <div class="am-progress">
                                 <div class="am-progress-bar am-progress-bar-danger" style="width: 35%"></div>
                             </div>
@@ -400,10 +400,10 @@
                                         <td>2016-09-26</td>
                                         <td>
                                             <div class="tpl-table-black-operation">
-                                                <a href="javascript:;">
+                                                <a type="button"  data-am-modal="{target: '#my-alert'}">
                                                     <i class="am-icon-pencil"></i> 编辑
                                                 </a>
-                                                <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                <a type="button"  data-am-modal="{target: '#my-alert1'}" class="tpl-table-black-operation-del">
                                                     <i class="am-icon-trash"></i> 删除
                                                 </a>
                                             </div>
@@ -415,10 +415,10 @@
                                         <td>2016-09-26</td>
                                         <td>
                                             <div class="tpl-table-black-operation">
-                                                <a href="javascript:;">
+                                                <a type="button"  data-am-modal="{target: '#my-alert'}">
                                                     <i class="am-icon-pencil"></i> 编辑
                                                 </a>
-                                                <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                <a type="button"  data-am-modal="{target: '#my-alert1'}" class="tpl-table-black-operation-del">
                                                     <i class="am-icon-trash"></i> 删除
                                                 </a>
                                             </div>
@@ -430,10 +430,10 @@
                                         <td>2016-09-26</td>
                                         <td>
                                             <div class="tpl-table-black-operation">
-                                                <a href="javascript:;">
+                                                <a type="button"  data-am-modal="{target: '#my-alert'}">
                                                     <i class="am-icon-pencil"></i> 编辑
                                                 </a>
-                                                <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                <a type="button"  data-am-modal="{target: '#my-alert1'}" class="tpl-table-black-operation-del">
                                                     <i class="am-icon-trash"></i> 删除
                                                 </a>
                                             </div>
@@ -445,10 +445,10 @@
                                         <td>2016-09-26</td>
                                         <td>
                                             <div class="tpl-table-black-operation">
-                                                <a href="javascript:;">
+                                                <a type="button"  data-am-modal="{target: '#my-alert'}">
                                                     <i class="am-icon-pencil"></i> 编辑
                                                 </a>
-                                                <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                <a type="button"  data-am-modal="{target: '#my-alert1'}" class="tpl-table-black-operation-del">
                                                     <i class="am-icon-trash"></i> 删除
                                                 </a>
                                             </div>
@@ -460,10 +460,10 @@
                                         <td>2016-09-26</td>
                                         <td>
                                             <div class="tpl-table-black-operation">
-                                                <a href="javascript:;">
+                                                <a type="button"  data-am-modal="{target: '#my-alert'}">
                                                     <i class="am-icon-pencil"></i> 编辑
                                                 </a>
-                                                <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                <a type="button"  data-am-modal="{target: '#my-alert1'}" class="tpl-table-black-operation-del">
                                                     <i class="am-icon-trash"></i> 删除
                                                 </a>
                                             </div>
@@ -483,6 +483,47 @@
         </div>
     </div>
 </div>
+
+
+<!--编辑模态框-->
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">编辑</div>
+        <div class="am-modal-bd">
+            哈哈，想不到吧我没法编辑！
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn">确定</span>
+        </div>
+    </div>
+</div>
+
+<!--弹窗模态框-->
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert1">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">删除</div>
+        <div class="am-modal-bd">
+            暂时无法删除
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn">确定</span>
+        </div>
+    </div>
+</div>
+
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert2">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">更多月份</div>
+        <div class="am-modal-bd">
+            没有更多的月份
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn">确定</span>
+        </div>
+    </div>
+</div>
+
+
 <script src="assets/js/amazeui.min.js"></script>
 <script src="assets/js/amazeui.datatables.min.js"></script>
 <script src="assets/js/dataTables.responsive.min.js"></script>

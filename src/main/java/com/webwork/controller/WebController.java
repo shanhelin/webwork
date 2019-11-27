@@ -139,7 +139,7 @@ public class WebController {
         Integer id=(Integer)session.getAttribute( "id" );
         if(id==null){
 
-            return "login";
+            return "redirect:/";
         }
         return "index.html";
     }
@@ -150,7 +150,7 @@ public class WebController {
         Integer id=(Integer)session.getAttribute( "id" );
         if(id==null){
 
-            return "login";
+            return "redirect:/";
         }
         return "tablelist";
     }
@@ -161,7 +161,7 @@ public class WebController {
         Integer id=(Integer)session.getAttribute( "id" );
         if(id==null){
 
-            return "login";
+            return "redirect:/";
         }
         return "tablelistimg";
     }
