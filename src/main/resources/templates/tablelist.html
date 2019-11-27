@@ -281,7 +281,7 @@
                                 <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
                                     <input type="text" class="am-form-field ">
                                     <span class="am-input-group-btn">
-            <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" type="button"></button>
+            <button class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search" data-am-modal="{target: '#my-modal-loading'}" type="button"></button>
           </span>
                                 </div>
                             </div>
@@ -303,10 +303,10 @@
                                         <td>2019-10-19</td>
                                         <td>
                                             <div class="tpl-table-black-operation">
-                                                <a href="javascript:;">
+                                                <a type="button"  data-am-modal="{target: '#my-alert'}">
                                                     <i class="am-icon-pencil"></i> 编辑
                                                 </a>
-                                                <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                <a type="button"  data-am-modal="{target: '#my-alert1'}" class="tpl-table-black-operation-del">
                                                     <i class="am-icon-trash"></i> 删除
                                                 </a>
                                             </div>
@@ -318,10 +318,10 @@
                                         <td>2019-10-19</td>
                                         <td>
                                             <div class="tpl-table-black-operation">
-                                                <a href="javascript:;">
+                                                <a type="button"  data-am-modal="{target: '#my-alert'}">
                                                     <i class="am-icon-pencil"></i> 编辑
                                                 </a>
-                                                <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                <a type="button"  data-am-modal="{target: '#my-alert1'}" class="tpl-table-black-operation-del">
                                                     <i class="am-icon-trash"></i> 删除
                                                 </a>
                                             </div>
@@ -333,10 +333,10 @@
                                         <td>2019-10-19</td>
                                         <td>
                                             <div class="tpl-table-black-operation">
-                                                <a href="javascript:;">
+                                                <a type="button"  data-am-modal="{target: '#my-alert'}">
                                                     <i class="am-icon-pencil"></i> 编辑
                                                 </a>
-                                                <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                <a type="button"  data-am-modal="{target: '#my-alert1'}" class="tpl-table-black-operation-del">
                                                     <i class="am-icon-trash"></i> 删除
                                                 </a>
                                             </div>
@@ -348,10 +348,10 @@
                                         <td>2019-10-19</td>
                                         <td>
                                             <div class="tpl-table-black-operation">
-                                                <a href="javascript:;">
+                                                <a type="button"  data-am-modal="{target: '#my-alert'}">
                                                     <i class="am-icon-pencil"></i> 编辑
                                                 </a>
-                                                <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                <a type="button"  data-am-modal="{target: '#my-alert1'}" class="tpl-table-black-operation-del">
                                                     <i class="am-icon-trash"></i> 删除
                                                 </a>
                                             </div>
@@ -363,10 +363,10 @@
                                         <td>2019-10-19</td>
                                         <td>
                                             <div class="tpl-table-black-operation">
-                                                <a href="javascript:;">
+                                                <a type="button"  data-am-modal="{target: '#my-alert'}">
                                                     <i class="am-icon-pencil"></i> 编辑
                                                 </a>
-                                                <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                <a type="button"  data-am-modal="{target: '#my-alert1'}" class="tpl-table-black-operation-del">
                                                     <i class="am-icon-trash"></i> 删除
                                                 </a>
                                             </div>
@@ -379,10 +379,10 @@
                                         <td>2019-10-19</td>
                                         <td>
                                             <div class="tpl-table-black-operation">
-                                                <a href="javascript:;">
+                                                <a type="button"  data-am-modal="{target: '#my-alert'}">
                                                     <i class="am-icon-pencil"></i> 编辑
                                                 </a>
-                                                <a href="javascript:;" class="tpl-table-black-operation-del">
+                                                <a type="button"  data-am-modal="{target: '#my-alert1'}" class="tpl-table-black-operation-del">
                                                     <i class="am-icon-trash"></i> 删除
                                                 </a>
                                             </div>
@@ -413,6 +413,40 @@
         </div>
     </div>
 </div>
+</div>
+<!--编辑模态框-->
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">编辑</div>
+        <div class="am-modal-bd">
+            哈哈，想不到吧我没法编辑！
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn">确定</span>
+        </div>
+    </div>
+</div>
+
+<!--弹窗模态框-->
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert1">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">删除</div>
+        <div class="am-modal-bd">
+            暂时无法删除
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn">确定</span>
+        </div>
+    </div>
+</div>
+
+<div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="my-modal-loading">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">正在载入...</div>
+        <div class="am-modal-bd">
+            <span class="am-icon-spinner am-icon-spin"></span>
+        </div>
+    </div>
 </div>
 <script src="assets/js/amazeui.min.js"></script>
 <script src="assets/js/amazeui.datatables.min.js"></script>

@@ -167,5 +167,12 @@ public class WebController {
     }
 
 
+    @RequestMapping("/index1")
+    public String index1(){
+
+
+        return "index1";
+    }
+
 
 }
