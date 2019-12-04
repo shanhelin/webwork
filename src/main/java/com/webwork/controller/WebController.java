@@ -1,5 +1,6 @@
 package com.webwork.controller;
 
+import com.webwork.dao.UserDao;
 import com.webwork.entity.User;
 import com.webwork.service.UserService;
 import com.webwork.unit.Md5Util;
@@ -30,6 +31,8 @@ public class WebController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserDao userDao;
     /**
      * 描述：注册界面
      * author：yulin
@@ -134,13 +137,16 @@ public class WebController {
      * @return
      */
     @RequestMapping("/index")
-    public String index(HttpServletRequest request){
+    public String index(HttpServletRequest request,Model model){
         HttpSession session=request.getSession();
         Integer id=(Integer)session.getAttribute( "id" );
         if(id==null){
 
             return "redirect:/";
         }
+        User user=userDao.getOne( id );
+        System.out.println( user );
+        model.addAttribute( "user",user );
         return "index.html";
     }
 
