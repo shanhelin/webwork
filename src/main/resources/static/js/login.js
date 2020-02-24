@@ -1,42 +1,45 @@
-let nginx_url = "http://127.0.0.1:8080";
+
 
 layui.use('form', function(){
-	let form = layui.form;
+	var form = layui.form;
 });
 
 $(function() {
 	$("#loginButton").click(function() {
-		let ident = $("#ident").val();
-		let username = $("#username").val();
+		var ident = $("#ident").val();
+		var username = $("#username").val();
+		var password=$("#password").val()
 		if (username === "") {
 			alert("请输入用户名");
 			return;
-		} else if ($("#password").val() === "") {
+		} else if ( password=== "") {
 			alert("请输入密码");
 			return;
 		} else if (ident === "") {
 			alert("请选择你的身份");
 			return;
 		}
+		dldata={"username": username,"password":password,"ident": ident};
+		var data=JSON.stringify(dldata);
+
 		$.ajax({
 			type: "post",
-			url: nginx_url + "/login",
-			data: $('#loginForm').serialize(),
-			async: true,
-			dataType: "jsonp",
-			jsonp: "callback",
+			url: "/loginUser",
+			data: data,
+			contentType:"application/json",
+			dataType:"json",
 			success: function(result) {
-				if (result.loginStatus === 'SUCCESS') {
+				if (result === 1) {
 					$.cookie("username", username);
 					$.cookie("ident", ident);
 					if (ident === "0") {
-						window.location.href = "index-student.html";
+						window.location.href = "/indexStudent";
 					} else if (ident === "1") {
-						window.location.href = "index-teacher.html";
+						window.location.href = "/indexTeacher";
 					} else if (ident === "2") {
-						window.location.href = "index-admin.html";
+						window.location.href = "/indexAdmin";
 					}
-				} else if (result.loginStatus === 'ERROR') {
+				} else if (result === 0) {
 					alert("用户名或密码错误");
 					$("#loginForm")[0].reset();
 				}
